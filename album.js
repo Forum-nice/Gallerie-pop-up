@@ -1,5 +1,3 @@
-// ── Page album ──
-
 const albumTitle = document.getElementById('album-title')
 const albumDesc  = document.getElementById('album-desc')
 const photoGrid  = document.getElementById('photo-grid')
@@ -19,9 +17,8 @@ let current = 0
 
 if (!albumId) location.href = 'index.html'
 
-// ── Chargement ──
 async function loadAlbum() {
-  const { data: album, error } = await supabase
+  const { data: album, error } = await db
     .from('albums')
     .select(`id, name, description, photos(url)`)
     .eq('id', albumId)
@@ -51,7 +48,6 @@ async function loadAlbum() {
   `).join('')
 }
 
-// ── Partage ──
 btnShare.addEventListener('click', () => {
   navigator.clipboard.writeText(location.href).then(showToast)
 })
@@ -61,7 +57,6 @@ function showToast() {
   setTimeout(() => toast.classList.add('hidden'), 2000)
 }
 
-// ── Lightbox ──
 function openLightbox(i) {
   current = i
   lbImg.src = photos[i]
