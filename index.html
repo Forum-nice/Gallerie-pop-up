@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pop-up Gallery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <div class="header-left">
+      <span class="site-name">Pop-up Gallery</span>
+    </div>
+    <button class="btn-new" id="btn-open-modal">Nouvel album</button>
+  </header>
+
+  <main>
+    <div class="page-title">
+      <h1>Albums</h1>
+    </div>
+    <div class="album-grid" id="album-grid">
+      <p class="empty">Aucun album pour l'instant.</p>
+    </div>
+  </main>
+
+  <!-- Modal -->
+  <div class="overlay hidden" id="overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="modal-title">Nouvel album</span>
+        <button class="btn-close" id="btn-close-modal">✕</button>
+      </div>
+
+      <label>Nom de l'album</label>
+      <input type="text" id="input-name" placeholder="Ex. Pop-up Noël 2024">
+
+      <label>Description <em>(optionnel)</em></label>
+      <textarea id="input-desc" placeholder="Une courte description…"></textarea>
+
+      <label>Photos</label>
+      <div class="dropzone" id="dropzone">
+        <input type="file" id="file-input" multiple accept="image/*">
+        <p>Clique ou glisse tes photos ici</p>
+        <small>JPG, PNG, WEBP — plusieurs fichiers acceptés</small>
+      </div>
+      <div class="preview-row" id="preview-row"></div>
+
+      <button class="btn-create" id="btn-create">Créer l'album</button>
+      <p class="status" id="status"></p>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
